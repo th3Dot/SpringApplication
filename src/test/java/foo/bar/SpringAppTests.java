@@ -16,13 +16,14 @@ public class SpringAppTests {
     @Autowired
     private HelloConsumer helloConsumer;
 
+    @Autowired
+    private ConsumeManager consumeManager;
+
     @Test
     public void testSayHello() {
         assertEquals("Hello!", helloService.sayHello());
     }
 
     @Test
-    public void testHelloConsumer() {
-        assertEquals("Hello!", helloConsumer.consume());
-    }
+    public void testSpringInheritance() { assertEquals("Can't consume :(", helloConsumer.consume()); }
 }
