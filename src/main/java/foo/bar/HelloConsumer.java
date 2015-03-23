@@ -10,7 +10,7 @@ import org.apache.log4j.Logger;
  * Created by Martin on 23. 3. 2015.
  */
 @Component
-public class HelloConsumer {
+public class HelloConsumer extends AbstractService{
 
     private static final Logger logger = LogManager.getLogger(HelloConsumer.class);
 
@@ -19,7 +19,12 @@ public class HelloConsumer {
 
     public String consume() {
         logger.info("consume() method running");
-        return helloService.sayHello();
+
+        if (consumeManager.canConsume()) {
+            return helloService.sayHello();
+        }
+
+        return "Can't consume :(";
     }
 
 }
