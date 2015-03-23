@@ -10,11 +10,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring-config.xml")
 public class SpringAppTests {
+
     @Autowired
     private HelloService helloService;
 
     @Autowired
-    private HelloConsumer helloConsumer;
+    private AbstractConsumer helloConsumer;
 
     @Autowired
     private ConsumeManager consumeManager;
@@ -25,5 +26,9 @@ public class SpringAppTests {
     }
 
     @Test
-    public void testSpringInheritance() { assertEquals("Can't consume :(", helloConsumer.consume()); }
+    public void testSpringInheritance() {
+        assertEquals("Can't consume :(", helloConsumer.consume());
+        assertEquals(false, consumeManager.canConsume());
+    }
+
 }

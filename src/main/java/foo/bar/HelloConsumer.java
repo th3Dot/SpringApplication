@@ -10,9 +10,9 @@ import org.apache.log4j.Logger;
  * Created by Martin on 23. 3. 2015.
  */
 @Component
-public class HelloConsumer extends AbstractService{
+public class HelloConsumer extends AbstractConsumer {
 
-    private static final Logger logger = LogManager.getLogger(HelloConsumer.class);
+    private static final Logger logger = LogManager.getLogger(AbstractConsumer.class);
 
     @Autowired
     private HelloService helloService;
